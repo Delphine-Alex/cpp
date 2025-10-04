@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpaiva <dpaiva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/19 22:45:03 by dpaiva            #+#    #+#             */
-/*   Updated: 2025/09/28 12:55:13 by dpaiva           ###   ########.fr       */
+/*   Created: 2025/09/21 17:14:28 by dpaiva            #+#    #+#             */
+/*   Updated: 2025/09/21 19:33:00 by dpaiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cctype>
+#ifndef CONTACT_HPP
+#define CONTACT_HPP
 
+#include <iomanip>
 #include <iostream>
 
-int main(int argc, char** argv)
+#include <string>
+
+class Contact
 {
-	if (argc > 1)
-	{
-		for (int i = 1; i < argc; i++)
-		{
-			for (int j = 0; argv[i][j] != '\0'; j++)
-			{
-				std::cout << (char)std::toupper(argv[i][j]);
-			}
-			if (argv[i] != '\0')
-			{
-				std::cout << " ";
-			}
-		}
-	}
-	else
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
+	private:
+		std::string informations[5];
+		static std::string fild_name[5];
 
-	std::cout << std::endl;
+	public:
+		Contact();
+		~Contact();
 
-	return (0);
-}
+		bool set_contact();
+		void get_contact(int index);
+};
+
+#endif
