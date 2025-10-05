@@ -1,0 +1,34 @@
+CC = c++
+
+NAME = zombie
+
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -I $(INC_DIR)
+
+INC_DIR = include
+OBJ_DIR = obj
+SRC_DIR = src
+
+SRC_FILES = main.cpp Zombie.cpp randomChump.cpp newZombie.cpp
+SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
+OBJ = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.cpp=.o))
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+clean:
+	rm -rf $(OBJ_DIR)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
