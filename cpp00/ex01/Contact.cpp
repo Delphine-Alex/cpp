@@ -12,18 +12,7 @@
 
 #include "Contact.hpp"
 
-Contact::Contact()
-{
-	for (int i = 0; i < 5; i++)
-	{
-		informations[i] = std::string();
-	}
-}
-
-Contact::~Contact()
-{
-}
-std::string Contact::fild_name[5] =
+std::string Contact::_fild_name[5] =
 {
 	"first name",
 	"last name",
@@ -32,35 +21,27 @@ std::string Contact::fild_name[5] =
 	"darkest secret"
 };
 
-
-bool Contact::set_contact()
+bool Contact::setContact()
 {
-	for (int i = 0; i <= 4; i++)
+	for (int i = 0; i < 5; i++)
 	{
-		std::cout << "Please enter a " << fild_name[i] << ":" << std::endl;
+		std::cout << "Please enter a " << _fild_name[i] << ":" << std::endl;
 
 		while (true)
 		{
-			if (std::getline(std::cin, informations[i]) == false)
+			if (std::getline(std::cin, _informations[i]) == false)
 			{
 				if (std::cin.eof())
 				{
-					std::cout << "End-of-file (EOF) detected (Ctrl-D).";
+					std::cout << "End-of-file (EOF) detected (Ctrl-D). ";
 					std::cout << "Exiting the phonebook..." << std::endl;
 					exit(0);
 				}
-				else
-				{
-					std::cerr << "An input error occurred. ";
-					std::cerr << "Please try again." << std::endl;
-					std::cin.clear();
-					continue;
-				}
 			}
-			else if (informations[i].empty())
+			else if (_informations[i].empty())
 			{
 				std::cout << "This field cannot be empty." << std::endl;
-				std::cout << "Again, please enter a " << fild_name[i];
+				std::cout << "Again, please enter a " << _fild_name[i];
 				std::cout << ":" << std::endl;
 				continue;
 			}
@@ -74,17 +55,21 @@ bool Contact::set_contact()
 }
 
 
-void Contact::get_contact(int index)
+void Contact::getContact(int index)
 {
 	std::cout << "|" << std::setw(10) << index;
 
 	for (int i = 0; i < 3; i++)
 	{
 		std::cout << "|";
-		if (informations[i].length() > 10)
-			std::cout << informations[i].substr(0, 9) << '.';
+		if (_informations[i].length() > 10)
+		{
+			std::cout << _informations[i].substr(0, 9) << '.';
+		}
 		else
-			std::cout << std::setw(10) << informations[i];
+		{
+			std::cout << std::setw(10) << _informations[i];
+		}
 	}
 
 	std::cout << "|" << std::endl;

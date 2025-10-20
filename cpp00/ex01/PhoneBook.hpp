@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpaiva <dpaiva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/21 17:14:28 by dpaiva            #+#    #+#             */
-/*   Updated: 2025/09/21 19:33:00 by dpaiva           ###   ########.fr       */
+/*   Created: 2025/09/28 13:45:39 by dpaiva            #+#    #+#             */
+/*   Updated: 2025/09/28 15:29:34 by dpaiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-#define CONTACT_HPP
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
 
-#include <iomanip>
+#include "Contact.hpp"
+
 #include <iostream>
 
-#include <string>
-
-class Contact
+class PhoneBook
 {
-	private:
-		std::string informations[5];
-		static std::string fild_name[5];
+private:
+    Contact	_contact[8];
+    int		_index;
+    bool	_full;
 
-	public:
-		Contact();
-		~Contact();
+public:
+    PhoneBook();
+    ~PhoneBook() {};
 
-		bool set_contact();
-		void get_contact(int index);
+    void setInformations();
+    void getInformations();
+
+	void printTableBorder() const;
+	void printTableHeader() const;
+
 };
 
 #endif

@@ -47,9 +47,13 @@ int main(void)
 			continue;
 		}
 		else if (command.compare("ADD") == 0)
-			phonebook.set_informations();
+		{
+			phonebook.setInformations();
+		}
 		else if (command.compare("SEARCH") == 0)
-			phonebook.get_informations();
+		{
+			phonebook.getInformations();
+		}
 		else if (command.compare("EXIT") == 0)
 		{
 			std::cout << "Thank you for using my PhoneBook." << std::endl; 
