@@ -49,7 +49,7 @@ bool Contact::setContact()
 			if (_fild_name[i] == "phone number")
 			{
 				bool isvalid = true;
-				for (int j = 0; j <_informations[i].length(); j++)
+				for (size_t j = 0; j <_informations[i].length(); j++)
 				{
 					if (std::isdigit(_informations[i][j]) == false)
 					{
@@ -59,7 +59,7 @@ bool Contact::setContact()
 				}
 				if (isvalid == false)
 				{
-					std::cout << "Phone number must contain only digits.";
+					std::cout << "Phone number must contain only digits. ";
 					std::cout << "Again, please enter a " << _fild_name[i];
 					std::cout << ":" << std::endl;
 					continue;

@@ -27,7 +27,7 @@ int main(void)
 		{
 			if (std::cin.eof())
 			{
-				std::cout << "End-of-file (EOF) detected (Ctrl-D).";
+				std::cout << "End-of-file (EOF) detected (Ctrl-D). ";
 				std::cout << "Exiting the phonebook..." << std::endl;
 				return (0);
 			}
