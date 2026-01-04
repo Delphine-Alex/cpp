@@ -25,7 +25,8 @@ Fixed::Fixed(Fixed const& copy)
 {
     std::cout << "Copy constructor called" << std::endl;
 
-    this->_rawBits = copy.getRawBits();
+    // this->_rawBits = copy.getRawBits();
+    *this = copy;
 }
 
 Fixed::~Fixed()
