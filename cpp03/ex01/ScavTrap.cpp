@@ -44,65 +44,31 @@ ScavTrap& ScavTrap::operator=(ScavTrap const& ref)
 
 void ScavTrap::attack(const std::string& target)
 {
-    if (getEnergyPoints() > 0 && getHitPoints() > 0)
+    if (_energyPoints > 0 && _hitPoints > 0)
     {
-        std::cout << "ScavTrap " << getName() << " attacks " << target;
-        std::cout << ", causing " << getAttackDamage() << " points of damage!";
+        std::cout << "ScavTrap " << _name << " attacks " << target;
+        std::cout << ", causing " << _attackDamage << " points of damage!";
         std::cout << std::endl;
 
-        setEnergyPoints(getEnergyPoints() - 1);
+        _energyPoints -= 1;
     }
     else
     {
-        std::cout << "ScavTrap " << getName() << " can't attack because it ";
+        std::cout << "ScavTrap " << _name << " can't attack because it ";
         std::cout << "has no hit points or energy points left!" << std::endl;
-    }
-}
-
-void ScavTrap::takeDamage(unsigned int amount)
-{
-    std::cout << "ScavTrap " << getName() << " takes " << amount;
-    std::cout << " points of damage!" << std::endl;
-
-    setHitPoints(getHitPoints() - amount);
-    if (getHitPoints() < 0)
-        setHitPoints(0);
-}
-
-void ScavTrap::beRepaired(unsigned int amount)
-{
-    if (getEnergyPoints() > 0 && getHitPoints() > 0)
-    {
-        std::cout << "ScavTrap " << getName() << " repairs itself, regaining ";
-        std::cout << amount << " hit points!" << std::endl;
-
-        setEnergyPoints(getEnergyPoints() - 1);
-
-        if (amount == 0)
-            return;
-
-        setHitPoints(getHitPoints() + amount);
-        if (getHitPoints() > 100)
-            setHitPoints(100);
-    }
-    else
-    {
-        std::cout << "ScavTrap " << getName() << " can't repair itself ";
-        std::cout << "because it has no hit points or energy points ";
-        std::cout << "left!" << std::endl;
     }
 }
 
 void ScavTrap::guardGate()
 {
-    if (getHitPoints() > 0)
+    if (_hitPoints > 0)
     {
-        std::cout << "ScavTrap " << getName();
+        std::cout << "ScavTrap " << _name;
         std::cout << " is now in Gate keeper mode!" << std::endl;
     }
     else
     {
-        std::cout << "ScavTrap " << getName();
+        std::cout << "ScavTrap " << _name;
         std::cout << " can't enter Gate keeper mode (no hit points)!";
         std::cout << std::endl;
     }
@@ -110,7 +76,7 @@ void ScavTrap::guardGate()
 
 void ScavTrap::displayStatus() const
 {
-    std::cout << "[" << getName() << "] HP: " << getHitPoints();
-    std::cout << "/100 | Energy: " << getEnergyPoints() << "/50 | Damage: ";
-    std::cout << getAttackDamage() << std::endl;
+    std::cout << "[" << _name << "] HP: " << _hitPoints;
+    std::cout << "/100 | Energy: " << _energyPoints << "/50 | Damage: ";
+    std::cout << _attackDamage << std::endl;
 }
